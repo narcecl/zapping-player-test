@@ -49,7 +49,7 @@ useKeyboardControls({
         >
             <div class="w-full md:w-[70%]">
                 <div class="rounded-3xl overflow-hidden">
-                    <PlayerComponent />
+                    <PlayerComponent :full="false" />
                 </div>
             </div>
             <div class="w-full md:w-[30%]">

@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { useTemplateRef, watch } from 'vue';
+import { computed, useTemplateRef, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { usePlayerStore, useChannelStore } from '@/stores';
+
+const { full = true } = defineProps<{
+    full?: boolean;
+}>();
+
+const componentClasses = computed(() => ({
+    player: true,
+    'player--full': full,
+}));
 
 const videoRef = useTemplateRef<HTMLVideoElement | null>('player');
 
@@ -29,7 +38,7 @@ watch(currentChannel, () => {
 </script>
 
 <template>
-    <div class="player">
+    <div :class="componentClasses">
         <video
             :controls="false"
             :disablePictureInPicture="true"
@@ -47,6 +56,13 @@ watch(currentChannel, () => {
 <style scoped lang="scss">
 .player {
     position: relative;
+
+    &--full {
+        video {
+            min-height: 100dvh;
+        }
+    }
+
     &:after {
         content: '';
         display: block;
@@ -59,7 +75,6 @@ watch(currentChannel, () => {
     video {
         pointer-events: none;
         width: 100%;
-        height: 100dvh;
         aspect-ratio: 16 / 9;
     }
 }
