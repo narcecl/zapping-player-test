@@ -4,6 +4,7 @@ import ActionButton from '@/components/atoms/ActionButton/ActionButton.vue';
 import VolumeIcon from '@/components/icons/VolumeIcon.vue';
 import { usePlayerStore, useLanguageStore } from '@/stores';
 import { storeToRefs } from 'pinia';
+import MuteIcon from '@/components/icons/MuteIcon.vue';
 
 const barRef = ref<HTMLElement | null>(null);
 let isDragging = false;
@@ -49,7 +50,9 @@ const stopDrag = () => {
 <template>
     <div class="volume__control flex items-center gap-4">
         <ActionButton @click="ToggleVolumeControl" :aria-label="$t('controls_volume')">
-            <VolumeIcon aria-hidden="true" />
+            <!-- I used other sound icon for UX purposes -->
+            <VolumeIcon v-if="volume > 0.1" aria-hidden="true" class="text-white" />
+            <MuteIcon v-if="!volume" aria-hidden="true" class="text-white" />
         </ActionButton>
 
         <Transition name="slide-left">

@@ -16,7 +16,7 @@
         "lint": "eslint . --fix",
         "preview": "vite preview",
         "build:preview": "npm run build && npm run preview",
-        "test:unit": "vitest",
+        "test:unit": "vitest -u",
         "test:coverage": "vitest run --coverage",
         "type-check": "vue-tsc --build"
     },

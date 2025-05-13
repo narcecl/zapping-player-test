@@ -2,7 +2,9 @@ import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import type { Languages, LanguageItem } from '@/interfaces/language';
 import { LANGUAGES } from '@/lib/constants';
-import LanguageApp from '@/i18n/app.json';
+
+import LangES from '@/i18n/es.json';
+import LangPR from '@/i18n/pr.json';
 
 interface LanguageJson {
     [key: string]: {
@@ -10,7 +12,12 @@ interface LanguageJson {
     };
 }
 
-const languageData: LanguageJson = LanguageApp;
+const languageData: LanguageJson = {
+    // This is the configuration language
+    es: LangES,
+    pr: LangPR,
+    fallback: LangES,
+};
 
 export const useLanguageStore = defineStore('language', () => {
     // --- State ---
@@ -29,7 +36,7 @@ export const useLanguageStore = defineStore('language', () => {
      */
     const $t = (key: string, replaceValue?: string): string => {
         try {
-            const lang = currentLanguage.value.value;
+            const lang = currentLanguage.value.value ?? 'fallback';
             const translation = languageData[lang]?.[key] ?? key;
 
             return replaceValue ? translation.replace(/\$\{(.*?)\}/g, replaceValue) : translation;

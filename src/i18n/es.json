@@ -1,0 +1,17 @@
+{
+    "controls_channel_change": "Cambiar",
+    "controls_channels": "Canales",
+    "controls_exit": "Salir",
+    "controls_full": "Pantalla completa",
+    "controls_info": "Info",
+    "controls_mute": "Silencio",
+    "controls_play": "Reproducir video",
+    "controls_volume": "Abrir ajuste de volumen",
+
+    "accessibility_available_languages": "Lista de idiomas disponibles",
+    "accessibility_brand_website": "Ir al sitio web de Zapping",
+    "accessibility_change_channel": "Cambiar al canal ${var}",
+    "accessibility_change_languages": "Cambiar el idioma a ${var}",
+    "accessibility_current_language": "Idioma actual ${var}",
+    "accessibility_channel_logo": "Imagen del Logo de ${var}"
+}
