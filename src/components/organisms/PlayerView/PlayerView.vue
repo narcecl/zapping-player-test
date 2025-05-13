@@ -17,7 +17,6 @@ const { initTimer } = useTimer(() => {
 useMouse(() => {
     if (channel.value.controlsOpen) return;
     visibilyStore.toggleVisibility('controls', true);
-
     initTimer();
 });
 </script>

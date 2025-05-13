@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { nextTick, useTemplateRef } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useChannelStore } from '@/stores/channel';
 import type { Channel } from '@/interfaces/channel';
@@ -7,6 +8,8 @@ import ChannelItem from '@/components/atoms/ChannelItem/ChannelItem.vue';
 
 const channelStore = useChannelStore();
 const { channel } = storeToRefs(channelStore);
+
+const channelListRef = useTemplateRef<HTMLVideoElement | null>('channel_list');
 
 const { initTimer } = useTimer(() => {
     if (channel.value.controlsOpen) channelStore.toggleList(false);
@@ -20,17 +23,24 @@ const handleChangeChannel = (channel: Channel) => {
 useMouse(() => {
     initTimer();
 });
+
+nextTick(() => {
+    // Prevent close when scrolling
+    channelListRef.value?.addEventListener('scroll', () => {
+        initTimer();
+    });
+});
 </script>
 
 <template>
     <Transition name="slide-left">
-        <div v-if="channel.controlsOpen && channel.channels?.length" class="channel__list">
-            <ul class="channel__list__cont">
+        <aside v-show="channel.controlsOpen && channel.channels?.length" class="channel__list">
+            <ul ref="channel_list" class="channel__list__cont">
                 <li v-for="channel in channel.channels" :key="channel.number">
                     <ChannelItem v-bind="channel" @click="() => handleChangeChannel(channel)" />
                 </li>
             </ul>
-        </div>
+        </aside>
     </Transition>
 </template>
 

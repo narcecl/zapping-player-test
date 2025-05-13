@@ -27,22 +27,24 @@ const openChannelList = () => {
                     <HamburgerIcon aria-hidden="true" />
                 </ActionButton>
 
-                <Transition name="fade-down">
-                    <div
-                        v-show="currentChannel"
-                        :key="currentChannel?.name"
-                        class="flex items-center gap-4"
-                    >
-                        <ChannelLogo
-                            :name="currentChannel?.name ?? ''"
-                            :logo="currentChannel?.logo_color ?? ''"
-                            size="small"
-                        />
-                        <p class="text-white">
-                            {{ currentChannel?.number }} | {{ currentChannel?.name }}
-                        </p>
-                    </div>
-                </Transition>
+                <div class="relative md:w-[400px] h-[36px]">
+                    <Transition name="fade-down">
+                        <div
+                            v-show="currentChannel"
+                            :key="currentChannel?.name"
+                            class="absolute w-full flex items-center gap-4"
+                        >
+                            <ChannelLogo
+                                :name="currentChannel?.name ?? ''"
+                                :logo="currentChannel?.logo_color ?? ''"
+                                size="small"
+                            />
+                            <p class="text-white">
+                                {{ currentChannel?.number }} | {{ currentChannel?.name }}
+                            </p>
+                        </div>
+                    </Transition>
+                </div>
             </div>
 
             <div class="flex items-center gap-4">
@@ -54,7 +56,10 @@ const openChannelList = () => {
                     :aria-label="$t('accessibility_brand_website')"
                 >
                     <picture>
-                        <img :src="ZappingBrand" alt="" />
+                        <img
+                            :src="ZappingBrand"
+                            :alt="$t('accessibility_channel_logo', 'Zapping')"
+                        />
                     </picture>
                 </a>
             </div>

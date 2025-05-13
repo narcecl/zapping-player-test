@@ -15,6 +15,7 @@
         "format": "prettier --write src/",
         "lint": "eslint . --fix",
         "preview": "vite preview",
+        "build:preview": "npm run build && npm run preview",
         "test:unit": "vitest",
         "type-check": "vue-tsc --build"
     },

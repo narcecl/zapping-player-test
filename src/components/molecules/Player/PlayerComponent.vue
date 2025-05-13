@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { onMounted, useTemplateRef, watch } from 'vue';
+import { useTemplateRef, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { usePlayerStore, useChannelStore } from '@/stores';
-import { AVAILABLE_VIDEOS } from '@/lib/constants';
 
 const videoRef = useTemplateRef<HTMLVideoElement | null>('player');
 
@@ -26,20 +25,6 @@ watch(videoStatus, () => {
 watch(currentChannel, () => {
     playerStore.changeVideoStatus('playing');
     videoRef.value?.play();
-});
-
-onMounted(() => {
-    // Caching method
-    function preloadVideos(urls: string[]) {
-        urls.forEach((url) => {
-            const video = document.createElement('video');
-            video.src = url;
-            video.preload = 'auto';
-            video.load();
-        });
-    }
-
-    preloadVideos(AVAILABLE_VIDEOS);
 });
 </script>
 
