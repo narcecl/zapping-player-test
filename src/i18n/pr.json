@@ -6,12 +6,17 @@
     "controls_info": "Info",
     "controls_mute": "Silêncio",
     "controls_play": "Reproduzir vídeo",
-    "controls_volume": "Ajuste de volume aberto",
+    "controls_volume_enabled": "Fechar configurações de volume",
+    "controls_volume_disabled": "Abra as configurações de volume",
 
     "accessibility_available_languages": "Lista de idiomas disponíveis",
     "accessibility_brand_website": "Acesse o site de Zapping",
     "accessibility_change_channel": "Mudar para canal ${var}",
     "accessibility_change_languages": "Mude o idioma para ${var}",
-    "accessibility_current_language": "Idioma atual ${var}",
-    "accessibility_channel_logo": "Imagem do logotipo ${var}"
+    "accessibility_current_language": "Abrir painel de mudança de idioma. Idioma atual: ${var}",
+    "accessibility_channel_logo": "Imagem do logotipo ${var}",
+    "accessibility_play_button": "Reproduzir vídeo",
+    "accessibility_pause_button": "Pausar vídeo",
+    "accessibility_channel_list_enabled": "Fechar lista de canais disponíveis",
+    "accessibility_channel_list_disabled": "Lista aberta de canais disponíveis"
 }

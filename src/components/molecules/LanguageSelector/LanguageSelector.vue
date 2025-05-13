@@ -30,7 +30,7 @@ const changeLanguage = (language: LanguageItem) => {
             {{ currentLanguage.flag }}
             <span class="text-xs">{{ currentLanguage.value.toLocaleUpperCase() }}</span>
 
-            <ChevronIcon />
+            <ChevronIcon aria-hidden="true" />
         </button>
 
         <Transition name="fade-down">

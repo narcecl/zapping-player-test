@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { usePlayerStore, useLanguageStore } from '@/stores';
 import ActionButton from '@/components/atoms/ActionButton/ActionButton.vue';
 import VolumeIcon from '@/components/icons/VolumeIcon.vue';
-import { usePlayerStore, useLanguageStore } from '@/stores';
-import { storeToRefs } from 'pinia';
 import MuteIcon from '@/components/icons/MuteIcon.vue';
 
 const barRef = ref<HTMLElement | null>(null);
@@ -12,6 +12,11 @@ let isDragging = false;
 const { $t } = useLanguageStore();
 const playerStore = usePlayerStore();
 const { volume, visibilityStatus } = storeToRefs(playerStore);
+
+const ariaLabel = computed(() => {
+    if (visibilityStatus.value.volume) return $t('controls_volume_enabled');
+    return $t('controls_volume_disabled');
+});
 
 const ToggleVolumeControl = () => {
     playerStore.toggleVisibility('volume', !visibilityStatus.value.volume);
@@ -49,7 +54,7 @@ const stopDrag = () => {
 
 <template>
     <div class="volume__control flex items-center gap-4">
-        <ActionButton @click="ToggleVolumeControl" :aria-label="$t('controls_volume')">
+        <ActionButton @click="ToggleVolumeControl" :aria-label="ariaLabel">
             <!-- I used other sound icon for UX purposes -->
             <VolumeIcon v-if="volume > 0.1" aria-hidden="true" class="text-white" />
             <MuteIcon v-if="!volume" aria-hidden="true" class="text-white" />

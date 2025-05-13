@@ -27,6 +27,7 @@ const { currentChannel } = storeToRefs(channelStore);
                             name: 'channel_view',
                             params: { channelNumber: currentChannel?.number },
                         }"
+                        aria-label="Ir a la información del contenido actual"
                     >
                         <SidePanelIcon aria-hidden="true" />
                     </ActionButton>

@@ -6,15 +6,23 @@ import ChannelLogo from '@/components/atoms/ChannelLogo/ChannelLogo.vue';
 import ZappingBrand from '@/assets/images/brand-logo.png';
 import HamburgerIcon from '@/components/icons/HamburgerIcon.vue';
 import LanguageSelector from '../LanguageSelector/LanguageSelector.vue';
+import { computed } from 'vue';
 
 const { $t } = useLanguageStore();
-const visibilyStore = usePlayerStore();
+const playerStore = usePlayerStore();
 
 const channelStore = useChannelStore();
-const { currentChannel } = storeToRefs(channelStore);
+const { currentChannel, areControlsOpen } = storeToRefs(channelStore);
+
+const labelChannelToggle = computed(() => {
+    const label = areControlsOpen
+        ? 'accessibility_channel_list_disabled'
+        : 'accessibility_channel_list_enabled';
+    return $t(label);
+});
 
 const openChannelList = () => {
-    visibilyStore.toggleVisibility('controls', false);
+    playerStore.toggleVisibility('controls', false);
     setTimeout(() => channelStore.toggleList(true), 200);
 };
 </script>
@@ -23,7 +31,7 @@ const openChannelList = () => {
     <div class="player__header">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <ActionButton @click="openChannelList">
+                <ActionButton @click="openChannelList" :aria-label="labelChannelToggle">
                     <HamburgerIcon aria-hidden="true" />
                 </ActionButton>
 
