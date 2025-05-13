@@ -23,6 +23,7 @@ Está desarrollado con las siguientes tecnologías:
 - [Vue 3 (Composition API)](https://vuejs.org/): Framework de JavaScript para construir interfaces reactivas usando una API más flexible y organizada.
 - [Vite](https://vite.dev/): Empaquetador rápido para desarrollo y build de proyectos modernos.
 - [Vitest](https://vitest.dev/): Framework de pruebas unitarias rápido y compatible con Vite.
+- [Pinia](https://pinia.vuejs.org): Intuitivo manejador de estados en aplicaciones Vue.
 - [TypeScript](https://www.typescriptlang.org/): Superset de JavaScript que añade tipado estático para mayor seguridad y escalabilidad.
 - [SASS](https://sass-lang.com/): Preprocesador CSS que permite usar variables, funciones, anidamiento y otras utilidades para escribir estilos más mantenibles.
 - [TailwindCSS](https://tailwindcss.com): Una librería de utilidades para CSS, incluye helpers y componentes reutilizables.
