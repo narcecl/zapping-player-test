@@ -47,38 +47,48 @@ const stopDrag = () => {
 </script>
 
 <template>
-    <ActionButton @click="ToggleVolumeControl" :aria-label="$t('controls_volume')">
-        <VolumeIcon aria-hidden="true" />
-    </ActionButton>
+    <div class="volume__control flex items-center gap-4">
+        <ActionButton @click="ToggleVolumeControl" :aria-label="$t('controls_volume')">
+            <VolumeIcon aria-hidden="true" />
+        </ActionButton>
 
-    <Transition name="slide-left">
-        <div
-            v-if="visibilityStatus.volume"
-            class="volume_bar"
-            ref="barRef"
-            @mousedown="startDrag"
-            @click="handleClick"
-        >
-            <div class="volume_bar__progress" :style="{ width: `${volume * 100}%` }" />
-        </div>
-    </Transition>
+        <Transition name="slide-left">
+            <div
+                v-if="visibilityStatus.volume"
+                class="volume__control__bar"
+                ref="barRef"
+                @mousedown="startDrag"
+                @click="handleClick"
+            >
+                <div
+                    class="volume__control__bar__progress"
+                    :style="{ width: `${volume * 100}%` }"
+                />
+            </div>
+        </Transition>
+    </div>
 </template>
 
 <style lang="scss" scoped>
-.volume_bar {
-    width: 192px;
-    height: 8px;
-    position: relative;
-    background: rgba(white, 0.15);
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer;
+.volume__control {
+    min-width: 300px;
 
-    &__progress {
-        background: var(--color-brand-primary);
-        height: 100%;
+    &__bar {
+        width: 192px;
+        height: 8px;
+        position: relative;
+        background: rgba(white, 0.15);
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+
+        &__progress {
+            background: var(--color-brand-primary);
+            height: 100%;
+        }
     }
 }
+
 .slide-left {
     &-enter-active,
     &-leave-active {

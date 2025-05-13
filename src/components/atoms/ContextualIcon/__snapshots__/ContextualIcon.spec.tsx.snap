@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > Default render (button) 1`] = `"<div class="contextual_icon">F</div>"`;

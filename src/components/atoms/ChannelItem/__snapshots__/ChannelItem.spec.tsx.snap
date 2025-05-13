@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > Default render (button) 1`] = `
+"<button data-v-90b62ae5="" class="channer__item channer__item--active">
+  <p data-v-90b62ae5="" class="channer__item__number">103</p>
+  <picture data-v-922226ac="" data-v-90b62ae5="" class="channer__item__logo channer__item__logo--large"><img data-v-922226ac="" src="https://davinci.zappingtv.com/gato/media/256/canales/color/sony.jpg"></picture>
+  <h3 data-v-90b62ae5="" class="channer__item__name text-primary">Sony Channel</h3>
+</button>"
+`;
