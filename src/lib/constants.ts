@@ -1,15 +1,17 @@
 import type { Languages } from '@/interfaces/language';
 
 export const DEFAULT_DELAY = 5000;
+export const DEFAULT_VOLUME = 0;
 
 export const AVAILABLE_VIDEOS = [
-    'https://cdn.pixabay.com/video/2025/04/29/275633_large.mp4',
-    'https://cdn.pixabay.com/video/2025/03/29/268528_large.mp4',
-    'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
-    'https://cdn.pixabay.com/video/2016/06/27/3627-172488393_large.mp4',
-    'https://cdn.pixabay.com/video/2019/02/01/21116-315137080_large.mp4',
-    'https://cdn.pixabay.com/video/2019/05/03/23258-334228230_large.mp4',
-    'https://cdn.pixabay.com/video/2023/11/19/189813-887078786_large.mp4',
+    // 'https://cdn.pixabay.com/video/2025/04/29/275633_large.mp4',
+    // 'https://cdn.pixabay.com/video/2025/03/29/268528_large.mp4',
+    // 'https://cdn.pixabay.com/video/2025/04/09/270940_large.mp4',
+    // 'https://cdn.pixabay.com/video/2016/06/27/3627-172488393_large.mp4',
+    // 'https://cdn.pixabay.com/video/2019/02/01/21116-315137080_large.mp4',
+    // 'https://cdn.pixabay.com/video/2019/05/03/23258-334228230_large.mp4',
+    // 'https://cdn.pixabay.com/video/2023/11/19/189813-887078786_large.mp4',
+    'https://videos.pexels.com/video-files/3037170/3037170-uhd_2560_1440_30fps.mp4',
 ];
 
 export const CONTENT_SHOW_DEMO = {

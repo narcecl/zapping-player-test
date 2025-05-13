@@ -3,11 +3,14 @@ import { nextTick, useTemplateRef } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useChannelStore } from '@/stores/channel';
 import type { Channel } from '@/interfaces/channel';
-import { useTimer, useMouse } from '@/composables';
+import { useTimer, useMouse, useKeyboardControls } from '@/composables';
 import ChannelItem from '@/components/atoms/ChannelItem/ChannelItem.vue';
+import { usePlayerStore } from '@/stores';
+
+const playerStore = usePlayerStore();
 
 const channelStore = useChannelStore();
-const { channel } = storeToRefs(channelStore);
+const { channel, areControlsOpen } = storeToRefs(channelStore);
 
 const channelListRef = useTemplateRef<HTMLVideoElement | null>('channel_list');
 
@@ -22,6 +25,22 @@ const handleChangeChannel = (channel: Channel) => {
 
 useMouse(() => {
     initTimer();
+});
+
+useKeyboardControls({
+    keyMap: {
+        Escape: () => {
+            channelStore.toggleList(false);
+            initTimer();
+        },
+        ArrowRight: () => {
+            playerStore.toggleVisibility('controls', false);
+            setTimeout(() => {
+                channelStore.toggleList(!areControlsOpen.value);
+                initTimer();
+            }, 200);
+        },
+    },
 });
 
 nextTick(() => {

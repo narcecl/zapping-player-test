@@ -9,9 +9,9 @@ import { router } from '@/router/router';
 import { onMounted } from 'vue';
 import { getChannelsList } from '@/lib/fetch';
 
-const visibilityStore = usePlayerStore();
+const playerStore = usePlayerStore();
 const channelStore = useChannelStore();
-const { areControlsOpen, currentChannel, channelList } = storeToRefs(channelStore);
+const { currentChannel, channelList } = storeToRefs(channelStore);
 
 useKeyboardControls({
     keyMap: {
@@ -21,10 +21,6 @@ useKeyboardControls({
         ArrowUp: () => {
             channelStore.changeChannelByKey('ArrowUp');
         },
-        ArrowRight: () => {
-            visibilityStore.toggleVisibility('controls', false);
-            setTimeout(() => channelStore.toggleList(!areControlsOpen.value), 200);
-        },
         ArrowLeft: () => {
             router.push({
                 name: 'channel_view',
@@ -32,7 +28,10 @@ useKeyboardControls({
             });
         },
         Escape: () => {
-            visibilityStore.toggleVisibility('controls', false);
+            playerStore.toggleVisibility('controls', false);
+        },
+        m: () => {
+            playerStore.toggleMute();
         },
         f: () => {
             if (!document.fullscreenElement) {

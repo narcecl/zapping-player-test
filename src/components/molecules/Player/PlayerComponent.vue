@@ -26,25 +26,25 @@ watch(volume, () => {
     }
 });
 
-watch(videoStatus, () => {
-    if (videoStatus.value === 'playing') videoRef.value?.play();
+watch(videoStatus, (newValue) => {
+    if (newValue === 'playing') videoRef.value?.play();
     else videoRef.value?.pause();
 });
 
-watch(currentChannel, () => {
-    playerStore.changeVideoStatus('playing');
-    videoRef.value?.play();
+watch(currentChannel, (_, oldValue) => {
+    if (oldValue) playerStore.changeVideoStatus('playing');
 });
 </script>
 
 <template>
-    <div :class="componentClasses">
+    <div :class="componentClasses" v-if="currentChannel">
         <video
             :controls="false"
             :disablePictureInPicture="true"
             :key="currentChannel?.name"
-            autoplay
             loop
+            autoplay
+            :muted="volume === 0"
             poster="https://placehold.co/1920x1920/000000/1a1a1a?text=Cargando el video..."
             ref="player"
         >

@@ -1,5 +1,6 @@
 import { computed, reactive } from 'vue';
 import { defineStore } from 'pinia';
+import { DEFAULT_VOLUME } from '@/lib/constants';
 
 type MediaStatus = 'playing' | 'paused';
 
@@ -11,7 +12,7 @@ export const usePlayerStore = defineStore('player', () => {
     });
 
     const media = reactive({
-        volume: 0.5,
+        volume: DEFAULT_VOLUME,
         status: 'playing' as MediaStatus,
     });
 
@@ -32,19 +33,28 @@ export const usePlayerStore = defineStore('player', () => {
         media.status = newStatus;
     };
 
+    const toggleMute = () => {
+        if (volume.value > 0.1) {
+            changeVolume(0);
+        } else {
+            changeVolume(0.5);
+        }
+    };
+
     return {
         // state
         media,
         visibilityStatus,
 
         // getters
-        volume,
         videoStatus,
+        volume,
 
         // actions
-        toggleVisibility,
-        changeVolume,
         changeVideoStatus,
+        changeVolume,
+        toggleMute,
+        toggleVisibility,
     };
 });
 
