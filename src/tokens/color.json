@@ -1,0 +1,11 @@
+{
+    "color": {
+        "brand": {
+            "primary": { "value": "#FF245D", "comment": "Brand color (use as primary)" }
+        },
+        "content": {
+            "primary": { "value": "#fff" },
+            "secondary": { "value": "#eee" }
+        }
+    }
+}

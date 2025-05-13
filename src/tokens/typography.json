@@ -1,0 +1,14 @@
+{
+    "font": {
+        "family": { "value": "'Plus Jakarta Sans', sans-serif" },
+        "size": {
+            "large": { "value": "1.938rem", "comment": "31px - use for titles" },
+            "regular": { "value": "1rem", "comment": "16px - use for all common text." },
+            "small": {
+                "value": "0.875rem",
+                "comment": "14px - use small content, categories, etc."
+            },
+            "xsmall": { "value": "0.75rem", "comment": "12px - use for small labels." }
+        }
+    }
+}

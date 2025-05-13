@@ -1,0 +1,36 @@
+@use "tailwindcss" as *;
+@use "../tokens/scss/variables" as *;
+
+@use "../tokens/css/variables";
+@use "./animations";
+
+@theme {
+  // Font
+  --font-sans: var(--font-family);
+
+  // Text
+  --text-lg: var(--font-size-large);
+  --text-base: var(--font-size-regular);
+  --text-sm: var(--font-size-small);
+  --text-xs: var(--font-size-xsmall);
+
+  // Color
+  --color-primary: var(--color-brand-primary);
+  --color-white: var(--color-content-primary);
+  --color-content-secondary: var(--color-content-secondary);
+  --color-white-muted: #959595;
+}
+
+html {
+  background-color: black;
+}
+html,
+body,
+#app {
+  height: 100dvh;
+  overflow: hidden;
+}
+
+p {
+  line-height: calc(var(--spacing) * 6);
+}
