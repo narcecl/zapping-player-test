@@ -2,6 +2,8 @@
 
 Este es un desafío técnico de Zapping para el cargo de desarrollador Front-end.
 
+Puedes ver la [aplicación en vivo](https://zapping-player-test.vercel.app/) en la url de Vercel.
+
 ## Acerca del proyecto
 
 Este proyecto es un reproductor de video, inspirado en la aplicación de Zapping.
